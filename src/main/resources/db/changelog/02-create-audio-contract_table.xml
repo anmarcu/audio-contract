@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="2_create_audio_contract_table" author="anmarcu">
+        <preConditions>
+            <sqlCheck expectedResult="1">
+                SELECT count(*)
+                FROM information_schema.schemata
+                WHERE schema_name = 'audio_contracts';
+            </sqlCheck>
+        </preConditions>
+
+        <createTable tableName="audio_contract" schemaName="audio_contracts">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="audio_contract_id_pk"/>
+            </column>
+            <column name="firstName" type="TEXT"/>
+            <column name="lastName" type="TEXT"/>
+            <column name="contract" type="TEXT"/>
+            <column name="audioContract" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
